@@ -22,6 +22,35 @@ namespace DUAN_Homestay.Controllers
         {
             return View();
         }
+        //public IActionResult About()
+        //{
+        //    return View();
+        //}
+        //public IActionResult Blog()
+        //{
+        //    return View();
+        //}
+        //public IActionResult Blog_single()
+        //{
+        //    return View();
+        //}
+        //public IActionResult Contact()
+        //{
+        //    return View();
+        //}
+        //public IActionResult Restaurant()
+        //{
+        //    return View();
+        //}
+        //public IActionResult Rooms()
+        //{
+        //    return View();
+        //}
+        //public IActionResult Rooms_single()
+        //{
+        //    return View();
+        //}
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
