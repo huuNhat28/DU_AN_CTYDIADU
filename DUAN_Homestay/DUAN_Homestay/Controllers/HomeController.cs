@@ -15,13 +15,8 @@ namespace DUAN_Homestay.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            return View(); 
+        }  
         public IActionResult About()
         {
             return View();
