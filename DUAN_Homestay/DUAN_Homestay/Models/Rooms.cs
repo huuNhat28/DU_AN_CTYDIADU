@@ -13,7 +13,6 @@ namespace DUAN_Homestay.Models
         public required string Status { get; set; }
         public required string Description { get; set; }
 
-        public virtual ICollection<Users> Category { get; set; }
 
 
     }
