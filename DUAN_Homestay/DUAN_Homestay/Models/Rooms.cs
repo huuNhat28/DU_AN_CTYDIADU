@@ -3,11 +3,11 @@
     public class Rooms
     {
         public int RoomID { get; set; }
-        public string RoomNumber { get; set; }
-        public int CategoryID { get; set; }
-        public decimal Price { get; set; }
-        public string Status { get; set; }
-        public string Description { get; set; }
+        public required string RoomNumber { get; set; }
+        public required int CategoryID { get; set; }
+        public required decimal Price { get; set; }
+        public required string Status { get; set; }
+        public required string Description { get; set; }
 
 
     }
