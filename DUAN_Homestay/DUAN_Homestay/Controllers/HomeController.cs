@@ -1,6 +1,7 @@
-using DUAN_Homestay.Models;
+﻿using DUAN_Homestay.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+
 
 namespace DUAN_Homestay.Controllers
 {
@@ -17,9 +18,15 @@ namespace DUAN_Homestay.Controllers
         {
             return View(); 
         }
+        //public IActionResult Anh()
+        //{
+        //    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/360Tour/tour_testingserver.exe");
+        //    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+        //    return Content("Đã mở file tour_testingserver.exe!");
+        //}
         public IActionResult Anh()
         {
-            return Redirect("/app-files/index.html");
+            return Redirect("/360Tour/tour.html");
         }
         public IActionResult About()
         {
