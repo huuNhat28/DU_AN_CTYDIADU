@@ -16,7 +16,11 @@ namespace DUAN_Homestay.Controllers
         public IActionResult Index()
         {
             return View(); 
-        }  
+        }
+        public IActionResult Anh()
+        {
+            return Redirect("/app-files/index.html");
+        }
         public IActionResult About()
         {
             return View();
