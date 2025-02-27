@@ -195,28 +195,35 @@
     </section>
 
     <section class="ftco-section bg-light">
-    	<div class="container">
-				<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Our Rooms</h2>
-          </div>
-        </div>    		
-    		<div class="row">
-    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-    				<div class="room">
-                        <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url('@Url.Content("~/images/room-1.jpg")');">
-    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-    					</a>
-    					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
-    						<hr>
-                            <p class="pt-1"><a asp-controller="Home" asp-action="Anh" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    					</div>
-    				</div>
-    			</div>
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Our Rooms</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                    <div class="room">
+                        <!-- Ảnh nền có thể nhấn -->
+                        <a href="javascript:void(0);" class="img d-flex justify-content-center align-items-center"
+                           style="background-image: url('@Url.Content("~/images/room-1.jpg")');" onclick="openPopup()">
+                            <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="icon-search2"></span>
+                            </div>
+                        </a>
+
+                        <div class="text p-3 text-center">
+                            <h3 class="mb-3"><a href="javascript:void(0);" onclick="openPopup()">Suite Room</a></h3>
+                            <p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
+                            <hr>
+                            <p class="pt-1">
+                                <a asp-controller="Home" asp-action="Anh" class="btn-custom">
+                                    View Room Details <span class="icon-long-arrow-right"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
                         <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url('@Url.Content("~/images/room-2.jpg")');">
@@ -540,6 +547,27 @@
         </div>
       </div>
     </section>
+
+
+    <div id="popupContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9999;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 1200px; height: 80vh; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+            <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; border: none; background: red; color: white; padding: 10px 10px; cursor: pointer; font-size: 18px;">X</button>
+            <h3 style="text-align: center;">Tour 360</h3>
+            <iframe id="popupFrame" src="" style="width: 100%; height: calc(100% - 50px); border: none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openPopup() {
+            document.getElementById("popupFrame").src = "@Url.Content("~/360Tour/tour.html")"; // Load tour.html vào popup
+            document.getElementById("popupContainer").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popupContainer").style.display = "none";
+            document.getElementById("popupFrame").src = ""; // Xóa nội dung khi đóng
+        }
+    </script>
 
     
     

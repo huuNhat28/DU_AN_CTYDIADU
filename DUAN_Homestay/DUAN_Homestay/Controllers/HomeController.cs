@@ -26,7 +26,7 @@ namespace DUAN_Homestay.Controllers
         //}
         public IActionResult Anh()
         {
-            return Redirect("/360Tour/tour.html");
+            return View();
         }
         public IActionResult About()
         {
