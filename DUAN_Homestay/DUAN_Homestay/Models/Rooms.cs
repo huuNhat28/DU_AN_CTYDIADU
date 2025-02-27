@@ -7,18 +7,12 @@ namespace DUAN_Homestay.Models
     {
         [Key]
         public int RoomID { get; set; }
-        [Required]
-        public string RoomNumber { get; set; }
-        [Required]
-        public int CategoryID { get; set; }
-        [Required]
-        public decimal Price { get; set; }
-        [Required]
-        public string Status { get; set; }
-        [Required]
-        public string Description { get; set; }
+        public required string RoomNumber { get; set; }
+        public required int CategoryID { get; set; }
+        public required decimal Price { get; set; }
+        public required string Status { get; set; }
+        public required string Description { get; set; }
 
-        [JsonIgnore]
         public virtual ICollection<Users> Category { get; set; }
 
 

@@ -1,7 +1,10 @@
-﻿namespace DUAN_Homestay.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DUAN_Homestay.Models
 {
     public class Users
     {
+        [Key]
         public int UserID { get; set; }
         public required string FullName { get; set; }
         public required string Email { get; set; }
