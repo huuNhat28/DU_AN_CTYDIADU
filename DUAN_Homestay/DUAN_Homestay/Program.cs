@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using DUAN_Homestay.Data;
+
 namespace DUAN_Homestay
 {
     public class Program
@@ -9,13 +12,15 @@ namespace DUAN_Homestay
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<DataBaseContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Dbase"))
+            );
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+               
                 app.UseHsts();
             }
 
