@@ -27,6 +27,8 @@ namespace DUAN_Homestay.Models
         public virtual ICollection<DatPhong> DatPhongs { get; set; }
         [JsonIgnore]
         public virtual ICollection<LienHe> LienHes { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
 
     }
 }

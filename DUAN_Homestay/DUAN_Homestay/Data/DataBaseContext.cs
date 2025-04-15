@@ -9,6 +9,7 @@ namespace DUAN_Homestay.Data
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
         }
+        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TinTuc> TinTucs { get; set; }
         public virtual DbSet<LienHe> LienHes { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
@@ -20,6 +21,11 @@ namespace DUAN_Homestay.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasOne(tk => tk.KHang)
+                .WithMany(kh => kh.TaiKhoans)
+                .HasForeignKey(kh => kh.MaKhachHang);
 
             modelBuilder.Entity<DatPhong>()
                 .HasMany(hd => hd.HoaDons)

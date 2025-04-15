@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DUAN_Homestay.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20250414093057_Initial")]
+    [Migration("20250415022846_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -235,6 +235,45 @@ namespace DUAN_Homestay.Migrations
                     b.ToTable("Phongs");
                 });
 
+            modelBuilder.Entity("DUAN_Homestay.Models.TaiKhoan", b =>
+                {
+                    b.Property<string>("MaTaiKhoan")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MaKhachHang")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MatKhau")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NgayTao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenDangNhap")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("VaiTro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MaTaiKhoan");
+
+                    b.HasIndex("MaKhachHang");
+
+                    b.ToTable("TaiKhoans");
+                });
+
             modelBuilder.Entity("DUAN_Homestay.Models.TinTuc", b =>
                 {
                     b.Property<string>("MaTinTuc")
@@ -312,6 +351,17 @@ namespace DUAN_Homestay.Migrations
                     b.Navigation("KHang");
                 });
 
+            modelBuilder.Entity("DUAN_Homestay.Models.TaiKhoan", b =>
+                {
+                    b.HasOne("DUAN_Homestay.Models.KhachHang", "KHang")
+                        .WithMany("TaiKhoans")
+                        .HasForeignKey("MaKhachHang")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("KHang");
+                });
+
             modelBuilder.Entity("DUAN_Homestay.Models.DatPhong", b =>
                 {
                     b.Navigation("HoaDons");
@@ -322,6 +372,8 @@ namespace DUAN_Homestay.Migrations
                     b.Navigation("DatPhongs");
 
                     b.Navigation("LienHes");
+
+                    b.Navigation("TaiKhoans");
                 });
 
             modelBuilder.Entity("DUAN_Homestay.Models.Phong", b =>

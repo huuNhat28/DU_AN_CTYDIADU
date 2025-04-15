@@ -105,6 +105,30 @@ namespace DUAN_Homestay.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TaiKhoans",
+                columns: table => new
+                {
+                    MaTaiKhoan = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TenDangNhap = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MatKhau = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VaiTro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaKhachHang = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NgayTao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaiKhoans", x => x.MaTaiKhoan);
+                    table.ForeignKey(
+                        name: "FK_TaiKhoans_KhachHangs_MaKhachHang",
+                        column: x => x.MaKhachHang,
+                        principalTable: "KhachHangs",
+                        principalColumn: "MaKhachHang",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DatPhongs",
                 columns: table => new
                 {
@@ -175,6 +199,11 @@ namespace DUAN_Homestay.Migrations
                 name: "IX_LienHes_MaKhachHang",
                 table: "LienHes",
                 column: "MaKhachHang");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaiKhoans_MaKhachHang",
+                table: "TaiKhoans",
+                column: "MaKhachHang");
         }
 
         /// <inheritdoc />
@@ -188,6 +217,9 @@ namespace DUAN_Homestay.Migrations
 
             migrationBuilder.DropTable(
                 name: "LienHes");
+
+            migrationBuilder.DropTable(
+                name: "TaiKhoans");
 
             migrationBuilder.DropTable(
                 name: "TinTucs");
