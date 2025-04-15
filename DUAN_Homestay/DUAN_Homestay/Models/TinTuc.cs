@@ -1,26 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace DUAN_Homestay.Models
+namespace DUAN_Homestay.Models;
+
+public partial class TinTuc
 {
-    public class TinTuc
-    {
-        [Key]
-        public String MaTinTuc { get; set; }
-        [Required]
-        public String TieuDe { get; set; }
-        [Required]
-        public String NoiDung { get; set; }
-        [Required]
-        [StringLength(100)]
-        public String HinhAnh { get; set; }
-        [Required]
-        public String LoaiTin { get; set; }
-        [Required]
-        public DateTime NgayDang { get; set; }
-        [Required]
-        public DateTime NgayCapNhat { get; set; }
-        [Required]
-        public bool HienThi { get; set; }
+    public string MaTinTuc { get; set; } = null!;
 
-    }
+    public string TieuDe { get; set; } = null!;
+
+    public string NoiDung { get; set; } = null!;
+
+    public string HinhAnh { get; set; } = null!;
+
+    public string LoaiTin { get; set; } = null!;
+
+    public DateTime NgayDang { get; set; }
+
+    public DateTime NgayCapNhat { get; set; }
+
+    public bool HienThi { get; set; }
 }

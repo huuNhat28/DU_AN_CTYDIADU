@@ -1,24 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
-namespace DUAN_Homestay.Models
+namespace DUAN_Homestay.Models;
+
+public partial class HoaDon
 {
-    public class HoaDon
-    {
-        [Key]
-        public String MaHoaDon { get; set; }
-        [Required]
-        public long TongTien { get; set; }
-        [Required]
-        public String TrangThaiThanhToan { get; set; }
-        [Required]
-        public String PhuongThucThanhToan { get; set; }
-        [Required]
-        public DateTime NgayTao { get; set; }
+    public string MaHoaDon { get; set; } = null!;
 
-        [ForeignKey("DatPhong")]
-        public String MaDatPhong { get; set; }
-        public virtual DatPhong DPhong { get; set; }
+    public long TongTien { get; set; }
 
-    }
+    public string TrangThaiThanhToan { get; set; } = null!;
+
+    public string PhuongThucThanhToan { get; set; } = null!;
+
+    public DateTime NgayTao { get; set; }
+
+    public string MaDatPhong { get; set; } = null!;
+
+    public virtual DatPhong MaDatPhongNavigation { get; set; } = null!;
 }

@@ -1,29 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
-namespace DUAN_Homestay.Models
+namespace DUAN_Homestay.Models;
+
+public partial class LienHe
 {
-    public class LienHe
-    {
-        [Key]
-        public String MaLienHe { get; set; }
-        
-        [Required]
-        public String HoTen { get; set; }
-        [Required]
-        public String Email { get; set; }
-        [Required]
-        [StringLength(10)]
-        public String SoDienThoai { get; set; }
-        [Required]
-        public String NoiDung { get; set; }
-        [Required]
-        public String TrangThai { get; set; }
-        [Required]
-        public DateTime NgayTao { get; set; }
+    public string MaLienHe { get; set; } = null!;
 
-        [ForeignKey("KhachHang")]
-        public String MaKhachHang { get; set; }
-        public virtual KhachHang KHang { get; set; }
-    }
+    public string HoTen { get; set; } = null!;
+
+    public string Email { get; set; } = null!;
+
+    public string SoDienThoai { get; set; } = null!;
+
+    public string NoiDung { get; set; } = null!;
+
+    public string TrangThai { get; set; } = null!;
+
+    public DateTime NgayTao { get; set; }
+
+    public string MaKhachHang { get; set; } = null!;
+
+    public virtual KhachHang MaKhachHangNavigation { get; set; } = null!;
 }

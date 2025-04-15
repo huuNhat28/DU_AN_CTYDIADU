@@ -1,27 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
 
-namespace DUAN_Homestay.Models
+namespace DUAN_Homestay.Models;
+
+public partial class Phong
 {
-    public class Phong
-    {
-        [Key]
-        public String MaPhong { get; set; }
-        [Required]
-        public int SoPhong { get; set; }
-        [Required]
-        public String LoaiPhong { get; set; }
-        [Required]
-        public long Gia { get; set; }
-        [Required]
-        public string TrangThai { get; set; }
-        [Required]
-        public string MoTa { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string HinhAnh { get; set; }
-        [JsonIgnore]
-        public virtual ICollection<DatPhong> DatPhongs { get; set; }
+    public string MaPhong { get; set; } = null!;
 
-    }
+    public int SoPhong { get; set; }
+
+    public string LoaiPhong { get; set; } = null!;
+
+    public long Gia { get; set; }
+
+    public string TrangThai { get; set; } = null!;
+
+    public string MoTa { get; set; } = null!;
+
+    public string HinhAnh { get; set; } = null!;
+
+    public virtual ICollection<DatPhong> DatPhongs { get; set; } = new List<DatPhong>();
 }

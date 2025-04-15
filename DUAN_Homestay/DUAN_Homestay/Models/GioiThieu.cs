@@ -1,23 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace DUAN_Homestay.Models
+namespace DUAN_Homestay.Models;
+
+public partial class GioiThieu
 {
-    public class GioiThieu
-    {
-        [Key]
-        public String MaGioiThieu { get; set; }
-        [Required]
-        public String TieuDe { get; set; }
-        [Required]
-        public String NoiDung { get; set; }
-        [Required]
-        [StringLength(100)]
-        public String HinhAnh { get; set; }
-        [Required]
-        public DateTime NgayCapNhat { get; set; }
-        [Required]
-        public DateTime NgayTao { get; set; }
+    public string MaGioiThieu { get; set; } = null!;
 
+    public string TieuDe { get; set; } = null!;
 
-    }
+    public string NoiDung { get; set; } = null!;
+
+    public string HinhAnh { get; set; } = null!;
+
+    public DateTime NgayCapNhat { get; set; }
+
+    public DateTime NgayTao { get; set; }
 }

@@ -1,34 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
 
-namespace DUAN_Homestay.Models
+namespace DUAN_Homestay.Models;
+
+public partial class DatPhong
 {
-    public class DatPhong
-    {
-        [Key]
-        public String MaDatPhong { get; set; }
-        
-        [Required]
-        public DateTime NgayNhanPhong { get; set; }
-        [Required]
-        public DateTime NgayTraPhong { get; set; }       
-        [Required]
-        public String TrangThaiDat { get; set; }
-        [Required]
-        public long TongTien { get; set; }
-        [Required]
-        public DateTime NgayTao { get; set; }
+    public string MaDatPhong { get; set; } = null!;
 
-        [ForeignKey("KhachHang")]
-        public String MaKhachHang { get; set; }
-        public virtual KhachHang KHang { get; set; }
-        [ForeignKey("Phong")]
-        public String MaPhong { get; set; }
-        public virtual Phong P { get; set; }
+    public DateTime NgayNhanPhong { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+    public DateTime NgayTraPhong { get; set; }
 
-    }
+    public string TrangThaiDat { get; set; } = null!;
+
+    public long TongTien { get; set; }
+
+    public DateTime NgayTao { get; set; }
+
+    public string MaKhachHang { get; set; } = null!;
+
+    public string MaPhong { get; set; } = null!;
+
+    public virtual ICollection<HoaDon> HoaDons { get; set; } = new List<HoaDon>();
+
+    public virtual KhachHang MaKhachHangNavigation { get; set; } = null!;
+
+    public virtual Phong MaPhongNavigation { get; set; } = null!;
 }
