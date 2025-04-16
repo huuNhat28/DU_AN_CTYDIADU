@@ -1,7 +1,7 @@
-# DU_AN_CTYDIADU
+﻿# DU_AN_CTYDIADU
 ##Update db first:
 
-Scaffold-DbContext "Data Source=45.119.214.168;Database=Intern_Website;User id=intern;password=2025intern@ddc;trustservercertificate=true;encrypt=false;"microsoft.entityframeworkcore.sqlserver -OutputDir Models -force
+Scaffold-DbContext "Data Source=45.119.214.168;Database=Intern_Website;User id=intern;password=2025intern@ddc;trustservercertificate=true;encrypt=false;" microsoft.entityframeworkcore.sqlserver -OutputDir Models -force
 
 ##Error Update Db
 
@@ -9,5 +9,7 @@ Scaffold-DbContext "Data Source=45.119.214.168;Database=Intern_Website;User id=i
 
 ##Fix Error dotnet tool install --global dotnet-ef
 
-##Add nuget:
+##Add nuget: => Muốn sử dụng được Scaffold-DbContext thì phải cài các bản liên quan đến entity
 
+- microsoft.entityframeworkcore.sqlserver
+- Microsoft.EntityFrameworkCore.Design
