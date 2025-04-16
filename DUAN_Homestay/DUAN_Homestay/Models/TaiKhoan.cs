@@ -5,21 +5,33 @@ namespace DUAN_Homestay.Models;
 
 public partial class TaiKhoan
 {
-    public string MaTaiKhoan { get; set; } = null!;
+    public int Id { get; set; }
 
-    public string TenDangNhap { get; set; } = null!;
+    public int IdvaiTro { get; set; }
 
-    public string MatKhau { get; set; } = null!;
+    public int Idhang { get; set; }
 
-    public string Email { get; set; } = null!;
+    public string? HoTen { get; set; }
 
-    public string VaiTro { get; set; } = null!;
+    public string? Sdt { get; set; }
 
-    public string MaKhachHang { get; set; } = null!;
+    public string? Email { get; set; }
 
-    public string NgayTao { get; set; } = null!;
+    public string? SoCccd { get; set; }
 
-    public bool TrangThai { get; set; }
+    public string? DiaChi { get; set; }
 
-    public virtual KhachHang MaKhachHangNavigation { get; set; } = null!;
+    public string? MatKhau { get; set; }
+
+    public string? HinhAnh { get; set; }
+
+    public DateOnly? NgayTao { get; set; }
+
+    public bool? TrangThai { get; set; }
+
+    public virtual ICollection<DatPhong> DatPhongs { get; set; } = new List<DatPhong>();
+
+    public virtual Hang IdhangNavigation { get; set; } = null!;
+
+    public virtual VaiTro IdvaiTroNavigation { get; set; } = null!;
 }

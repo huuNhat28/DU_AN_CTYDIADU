@@ -5,19 +5,25 @@ namespace DUAN_Homestay.Models;
 
 public partial class Phong
 {
-    public string MaPhong { get; set; } = null!;
+    public int Id { get; set; }
 
-    public int SoPhong { get; set; }
+    public int IdloaiPhong { get; set; }
 
-    public string LoaiPhong { get; set; } = null!;
+    public int? SoPhong { get; set; }
 
-    public long Gia { get; set; }
+    public double? Gia { get; set; }
 
-    public string TrangThai { get; set; } = null!;
+    public string? MoTa { get; set; }
 
-    public string MoTa { get; set; } = null!;
+    public string? MoTaNgan { get; set; }
 
-    public string HinhAnh { get; set; } = null!;
+    public string? HinhAnh { get; set; }
+
+    public string? AnhNho { get; set; }
+
+    public bool? TrangThai { get; set; }
 
     public virtual ICollection<DatPhong> DatPhongs { get; set; } = new List<DatPhong>();
+
+    public virtual LoaiPhong IdloaiPhongNavigation { get; set; } = null!;
 }
