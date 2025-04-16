@@ -1,4 +1,8 @@
-**/bin/
-**/obj/
-**/Models/
-.vs/
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/HomeStay/.vs/HomeStay
+/HomeStay/WebHomeStay/bin/Debug/net9.0
+/HomeStay/WebHomeStay/Models
+/HomeStay/WebHomeStay/obj
