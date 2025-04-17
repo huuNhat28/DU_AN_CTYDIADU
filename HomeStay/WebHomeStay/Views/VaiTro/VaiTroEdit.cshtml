@@ -1,0 +1,38 @@
+﻿@model WebHomeStay.Models.VaiTro
+@{
+    ViewData["Title"] = "Sửa Vai trò" + Model.TenVaiTro;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Form chỉnh sửa khuyến mãi -->
+<form asp-action="Edit" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="TenVaiTro" class="form-label">Tên Vai trò</label>
+        <input type="text" id="TenVaiTro" name="TenVaiTro" class="form-control" value="@Model.TenVaiTro" />
+        <span asp-validation-for="TenVaiTro" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label for="TrangThai" class="form-label">Trạng thái</label>
+        <select id="TrangThai" name="TrangThai" class="form-select">
+            <option value="true" selected="@(Model.TrangThai == true)">Đang hoạt động</option>
+            <option value="false" selected="@(Model.TrangThai == true)">Ngưng hoạt động</option>
+        </select>
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success w-100">💾 Lưu thay đổi</button>
+    </div>
+
+    <div class="col-12">
+        <a asp-action="Index" class="btn btn-secondary w-100">↩️ Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

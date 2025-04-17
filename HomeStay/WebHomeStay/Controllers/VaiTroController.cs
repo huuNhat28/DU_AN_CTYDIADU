@@ -19,12 +19,12 @@ namespace WebHomeStay.Controllers
             {
                 vaitros = vaitros.Where(k => k.TenVaiTro.Contains(Key));
             }
-            return View(vaitros.ToList());
+            return View("VaiTroDS",vaitros.ToList());
         }
 
         public IActionResult Create()
         {
-            return View();
+            return View("VaiTroAdd");
         }
 
         [HttpPost] // Để gọi từ post về
@@ -36,7 +36,7 @@ namespace WebHomeStay.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vt);
+            return View("VaiTroAdd",vt);
         }
 
         public IActionResult Edit(int ID)
@@ -46,7 +46,7 @@ namespace WebHomeStay.Controllers
             {
                 return NotFound();
             }
-            return View(vt);
+            return View("VaiTroEdit",vt);
         }
 
         [HttpPost]
@@ -58,7 +58,7 @@ namespace WebHomeStay.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vt);
+            return View("VaiTroEdit", vt);
         }
 
         public IActionResult Delete(int ID)

@@ -1,0 +1,37 @@
+﻿@model WebHomeStay.Models.VaiTro
+
+@{
+    ViewData["Title"] = "Thêm Vai Trò";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="TenVaiTro" class="form-label">Tên Vai Trò</label>
+        <input asp-for="TenVaiTro" class="form-control" />
+        <span asp-validation-for="TenVaiTro" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <br />
+        <br />
+        <label asp-for="TrangThai" class="form-label">Trạng thái</label>
+        <select asp-for="TrangThai" class="form-select">
+            <option value="true">Đang Hoạt động</option>
+            <option value="false">Ngưng Hoạt động</option>
+        </select>
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">💾 Lưu</button>
+        <a asp-action="Index" class="btn btn-secondary">↩️ Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
