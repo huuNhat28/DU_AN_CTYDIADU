@@ -1,0 +1,41 @@
+﻿@model WebHomeStay.Models.LienHe
+
+@{
+    ViewData["Title"] = "Thêm liên hệ";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" placeholder="Nhập Email..." />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Sdt" class="form-label"></label>
+        <input asp-for="Sdt" class="form-control" placeholder="Nhập số điện thoại..." />
+        <span asp-validation-for="Sdt" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="TrangThai" class="form-label">Trạng thái</label>
+        <select asp-for="TrangThai" class="form-select">
+            <option value="true">Đang áp dụng</option>
+            <option value="false">Ngưng áp dụng</option>
+        </select>
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <br />
+        <button type="submit" class="btn btn-primary">💾 Lưu</button>
+        <a asp-action="Index" class="btn btn-secondary">↩️ Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

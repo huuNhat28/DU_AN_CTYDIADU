@@ -3,75 +3,74 @@ using WebHomeStay.Models;
 
 namespace WebHomeStay.Controllers
 {
-    public class HangController : Controller
+    public class LoaiPhongController : Controller
     {
         private readonly InternWebsiteContext _db;
 
-        public HangController()
+        public LoaiPhongController()
         {
             _db = new InternWebsiteContext();
         }
 
         public IActionResult index(string Key)
         {
-            var Hangs = _db.Hangs.AsQueryable();
+            var LoaiPhongs = _db.LoaiPhongs.AsQueryable();
+
             if (!String.IsNullOrEmpty(Key))
             {
-                Hangs = Hangs.Where(k => k.TenHang.Contains(Key));
+                LoaiPhongs = LoaiPhongs.Where(k => k.TenLoaiPhong.Contains(Key));
             }
-            return View(Hangs.ToList());
+            return View("LoaiPhongDS", LoaiPhongs.ToList());
         }
 
-        //Hàm Get: /KhuyenMai/Create
         public IActionResult Create()
         {
-            return View();
+            return View("LoaiPhongAdd");
         }
 
-
-        [HttpPost] // Để gọi từ post về
-        public IActionResult Create(Hang hang)
+        [HttpPost] 
+        public IActionResult Create(LoaiPhong lp)
         {
             if (ModelState.IsValid)
-            {
-                _db.Hangs.Add(hang);
+            {           
+                _db.LoaiPhongs.Add(lp);
                 _db.SaveChanges();
-                return RedirectToAction("Index"); 
+                return RedirectToAction("index");
             }
-            return View(hang);
+            return View("LoaiPhongAdd", lp);
         }
 
         public IActionResult Edit(int ID)
         {
-            var hang = _db.Hangs.Find(ID);
-            if (hang == null)
+            var lp = _db.LoaiPhongs.Find(ID);
+            if (lp == null)
             {
                 return NotFound();
             }
-            return View(hang);
+            return View("LoaiPhongEdit", lp);
         }
 
         [HttpPost]
-        public IActionResult Edit(Hang hang)
+        public IActionResult Edit(LoaiPhong lp)
         {
             if (ModelState.IsValid)
             {
-                _db.Hangs.Update(hang);
+                _db.LoaiPhongs.Update(lp);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("index");
             }
-            return View(hang);
+            return View("LoaiPhongEdit", lp);
         }
 
         public IActionResult Delete(int ID)
         {
-            var hang = _db.Hangs.Find(ID);
-            if (hang == null)
+            var lp = _db.LoaiPhongs.Find(ID);
+            if (lp == null)
             {
                 return NotFound();
             }
 
-            _db.Hangs.Remove(hang);
+            _db.LoaiPhongs.Remove(lp);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

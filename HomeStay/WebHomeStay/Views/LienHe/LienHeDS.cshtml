@@ -1,0 +1,69 @@
+﻿@model List<WebHomeStay.Models.LienHe>
+@{
+    ViewData["Title"] = "Danh sách Liên hệ";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Tìm kiếm -->
+<form asp-action="Index" method="get" class="row g-3 mb-3">
+    <div class="col-md-3">
+        <label for="Key" class="form-label">Tìm tên Email/SĐT Liên hệ</label>
+        <input type="text" id="Key" name="Key" class="form-control" placeholder="Nhập Email/SĐT..." value="@Context.Request.Query["Key"]" />
+    </div>
+    <div class="col-12">
+        <br />
+        <button type="submit" class="btn btn-primary w-100">🔍 Tìm</button>
+    </div>
+</form>
+
+<!-- Nút thêm -->
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="Create">➕ Thêm Liên hệ</a>
+</div>
+
+<!-- Bảng danh sách -->
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Số Điện Thoại</th>
+            <th>Trạng thái</th>
+            <th>Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var lh in Model)
+            {
+                <tr>
+                    <td>@lh.Id</td>
+                    <td>@lh.Email</td>
+                    <td>@lh.Sdt</td>
+                    <td>
+                        @if (lh.TrangThai == true)
+                        {
+                            <span class="badge bg-success">Đang áp dụng</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Ngưng áp dụng</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@lh.Id">✏️ Sửa</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@lh.Id" onclick="return confirm('Bạn có chắc muốn xoá liên hệ này?')">🗑️ Xoá</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">Không có Liên hệ nào .</td>
+            </tr>
+        }
+    </tbody>
+</table>
