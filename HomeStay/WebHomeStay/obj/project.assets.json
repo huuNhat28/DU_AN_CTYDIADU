@@ -4745,23 +4745,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
+    "C:\\Users\\21t10\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ThucTap\\DuAnDatPhong\\HomeStay\\WebHomeStay\\WebHomeStay.csproj",
+      "projectUniqueName": "C:\\Users\\21t10\\Source\\Repos\\DU_AN_CTYDIADU2\\HomeStay\\WebHomeStay\\WebHomeStay.csproj",
       "projectName": "WebHomeStay",
-      "projectPath": "D:\\ThucTap\\DuAnDatPhong\\HomeStay\\WebHomeStay\\WebHomeStay.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\ThucTap\\DuAnDatPhong\\HomeStay\\WebHomeStay\\obj\\",
+      "projectPath": "C:\\Users\\21t10\\Source\\Repos\\DU_AN_CTYDIADU2\\HomeStay\\WebHomeStay\\WebHomeStay.csproj",
+      "packagesPath": "C:\\Users\\21t10\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\21t10\\Source\\Repos\\DU_AN_CTYDIADU2\\HomeStay\\WebHomeStay\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\21t10\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
