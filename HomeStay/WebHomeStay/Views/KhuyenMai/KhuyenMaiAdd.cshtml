@@ -1,0 +1,47 @@
+﻿@model WebHomeStay.Models.KhuyenMai
+
+@{
+    ViewData["Title"] = "Thêm khuyến mãi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="TenKhuyenMai" class="form-label">Tên khuyến mãi</label>
+        <input asp-for="TenKhuyenMai" class="form-control" />
+        <span asp-validation-for="TenKhuyenMai" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="ThoiGian" class="form-label">Thời gian</label>
+        <input asp-for="ThoiGian" type="date" class="form-control" />
+        <span asp-validation-for="ThoiGian" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="SoTienGiam" class="form-label">Số tiền giảm (VND)</label>
+        <input asp-for="SoTienGiam" class="form-control" />
+        <span asp-validation-for="SoTienGiam" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="TrangThai" class="form-label">Trạng thái</label>
+        <select asp-for="TrangThai" class="form-select">
+            <option value="true">Đang áp dụng</option>
+            <option value="false">Ngưng áp dụng</option>
+        </select>
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">💾 Lưu</button>
+        <a asp-action="Index" class="btn btn-secondary">↩️ Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
