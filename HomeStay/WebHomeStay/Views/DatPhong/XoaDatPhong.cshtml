@@ -1,0 +1,63 @@
+﻿@model WebHomeStay.Models.DatPhong
+
+@{
+    ViewData["Title"] = "Xóa đặt phòng";
+}
+
+<h1>Xóa đặt phòng</h1>
+
+<h3>Bạn có muốn xóa đặt phòng này không?</h3>
+<div>
+    <h4>Phòng</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdphongNavigation.SoPhong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdphongNavigation.SoPhong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdtaiKhoanNavigation.HoTen)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdtaiKhoanNavigation.HoTen)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayDatPhong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NgayDatPhong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayTraPhong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NgayTraPhong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrangThaiThanhToan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrangThaiThanhToan)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrangThaiDatPhong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrangThaiDatPhong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TongTien)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

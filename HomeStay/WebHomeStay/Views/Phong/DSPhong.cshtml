@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebHomeStay.Models.Phong>
+
+@{
+    ViewData["Title"] = "Danh sách phòng";
+}
+
+<h1>Danh sách phòng</h1>
+
+<!-- Form tìm kiếm -->
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="text" name="Gia" class="form-control" placeholder="Tìm giá phòng" value="@ViewData["CurrentFilter"]" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 text-end">
+        <a asp-action="Create" class="btn btn-primary">Thêm phòng mới</a>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Số phòng</th>
+            <th>Loại phòng</th>
+            <th>Giá (VNĐ/đêm)</th>
+            <th>Mô tả</th>
+            <th>Hình ảnh</th>
+            <th>Mô tả ngắn</th>
+            <th>Hình ảnh nhỏ</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var phong in Model)
+        {
+            <tr>
+                <td>@phong.SoPhong</td>
+                <td>@phong.IdloaiPhongNavigation?.TenLoaiPhong</td>
+                <td>@phong.Gia?.ToString("N0")</td>
+                <td>@phong.MoTa</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(phong.HinhAnh))
+                    {
+                        <img src="@phong.HinhAnh" alt="@phong.MoTa" style="width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>Chưa có ảnh</span>
+                    }
+                </td>
+                <td>@phong.MoTaNgan</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(phong.AnhNho))
+                    {
+                        <img src="~/uploads/@phong.AnhNho" alt="@phong.MoTaNgan" style="width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>Chưa có ảnh</span>
+                    }
+                </td>
+                <td>@(phong.TrangThai == true ? "Trống" : "Đã đặt")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@phong.Id" class="btn btn-info btn-sm">Chi tiết</a>
+                    <a asp-action="Edit" asp-route-id="@phong.Id" class="btn btn-warning btn-sm">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@phong.Id" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        // Có thể thêm JavaScript nếu cần (ví dụ: xác nhận trước khi xóa)
+    </script>
+}   

@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebHomeStay.Models;
+
 namespace WebHomeStay
 {
     public class Program
@@ -8,6 +11,9 @@ namespace WebHomeStay
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<InternWebsiteContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Dbase")));
 
             var app = builder.Build();
 
@@ -27,7 +33,7 @@ namespace WebHomeStay
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=DatPhong}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

@@ -1,0 +1,73 @@
+﻿@model WebHomeStay.Models.Phong
+
+@{
+    ViewData["Title"] = "Thêm phòng mới";
+}
+
+<h1>Thêm phòng mới</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdloaiPhong" class="control-label">Loại Phòng</label>
+                <select asp-for="IdloaiPhong" class="form-control" asp-items="@(new SelectList(ViewBag.LoaiPhongs, "Id", "TenLoaiPhong"))">
+                    <option value="">Chọn loại phòng</option>
+                </select>
+                <span asp-validation-for="IdloaiPhong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoPhong" class="control-label">Số Phòng</label>
+                <input asp-for="SoPhong" class="form-control" />
+                <span asp-validation-for="SoPhong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gia" class="control-label">Giá Phòng</label>
+                <input asp-for="Gia" class="form-control" />
+                <span asp-validation-for="Gia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label">Mô tả phòng</label>
+                <textarea asp-for="MoTa" class="form-control"></textarea>
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTaNgan" class="control-label">Mô tả ngắn</label>
+                <input asp-for="MoTaNgan" class="form-control" />
+                <span asp-validation-for="MoTaNgan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HinhAnh" class="control-label">Hình Ảnh 360</label>
+				<br />  
+                <input type="file" multiple asp-for="HinhAnh" />
+                <span asp-validation-for="HinhAnh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnhNho" class="control-label">Ảnh nhỏ</label>
+                <br />
+                <input type="file" asp-for="AnhNho" />
+                <span asp-validation-for="AnhNho" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrangThai" class="control-label">Trạng Thái</label>
+                <select asp-for="TrangThai" class="form-control">
+                    <option value="true">Trống</option>
+                    <option value="false">Đã đặt</option>
+                </select>
+                <span asp-validation-for="TrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

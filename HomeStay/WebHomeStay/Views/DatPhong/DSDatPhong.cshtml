@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebHomeStay.Models.DatPhong>
+
+@{
+    ViewData["Title"] = "Danh sách đặt phòng";
+}
+
+<br />
+<br />
+<h1>Danh sách đặt phòng</h1>
+
+<!-- Form tìm kiếm -->
+<form asp-controller="DatPhong" asp-action="Index" method="get" class="row g-3 mb-4">
+    <div class="col-md-2">
+        <label>Ngày đặt phòng</label>
+        <input type="date" name="NgayDatPhong" class="form-control" value="@ViewData["NgayDatPhong"]" />
+    </div>
+    <div class="col-md-2">
+        <label>Ngày trả phòng</label>
+        <input type="date" name="NgayTraPhong" class="form-control" value="@ViewData["NgayTraPhong"]" />
+    </div>
+    <div class="col-md-2">
+        <label>Trạng thái thanh toán</label>
+        <select name="TrangThaiThanhToan" class="form-select">
+            <option value="">-- Tất cả --</option>
+            <option value="true">Đã thanh toán</option>
+            <option value="false">Chưa thanh toán</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Trạng thái đặt phòng</label>
+        <select name="TrangThaiDatPhong" class="form-select">
+            <option value="">-- Tất cả --</option>
+            <option value="true">Đã đặt</option>
+            <option value="false">Chưa đặt</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label>Số phòng</label>
+        <input type="text" name="soPhong" value="@ViewData["soPhong"]" class="form-control" placeholder="Nhập số phòng" />
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
+    </div>
+</form>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm đặt phòng mới</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Số phòng</th>
+            <th>Ngày đặt phòng</th>
+            <th>Ngày trả phòng</th>
+            <th>Trạng thái thanh toán</th>
+            <th>Trạng thái đặt phòng</th>
+            <th>Tổng tiền</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var datphong in Model)
+        {
+            <tr>
+                <td>@datphong.IdphongNavigation?.SoPhong</td>
+                <td>@datphong.NgayDatPhong?.ToString("dd/MM/yyyy")</td>
+                <td>@datphong.NgayTraPhong?.ToString("dd/MM/yyyy")</td>
+                <td>@(datphong.TrangThaiThanhToan == true ? "Đã thanh toán" : "Chưa thanh toán")</td>
+                <td>@(datphong.TrangThaiDatPhong == true ? "Đã đặt" : "Chưa đặt")</td>
+                <td>@datphong.TongTien?.ToString("N0")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@datphong.Id" class="btn btn-info btn-sm">Chi tiết</a>
+                    <a asp-action="Edit" asp-route-id="@datphong.Id" class="btn btn-warning btn-sm">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@datphong.Id" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -29,6 +29,8 @@ public partial class TaiKhoan
 
     public bool? TrangThai { get; set; }
 
+    public string? ResetCode { get; set; }
+
     public virtual ICollection<DatPhong> DatPhongs { get; set; } = new List<DatPhong>();
 
     public virtual Hang IdhangNavigation { get; set; } = null!;

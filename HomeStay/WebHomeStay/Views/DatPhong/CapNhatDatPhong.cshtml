@@ -1,0 +1,57 @@
+﻿@model WebHomeStay.Models.DatPhong
+
+@{
+    ViewData["Title"] = "Sửa phòng";
+}
+
+<h1>Sửa phòng</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Idphong" class="control-label">Số Phòng</label>
+                <input asp-for="Idphong" class="form-control" asp-items="@(new SelectList(ViewBag.Phongs, "Id", "SoPhong"))">
+                <span asp-validation-for="Idphong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayDatPhong" class="control-label">Ngày dặt phòng</label>
+                <input asp-for="NgayDatPhong" class="form-control" type="date" />
+                <span asp-validation-for="NgayDatPhong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayTraPhong" class="control-label">Ngày trả phòng</label>
+                <input asp-for="NgayTraPhong" class="form-control" type="date"></input>
+                <span asp-validation-for="NgayTraPhong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrangThaiThanhToan" class="control-label">Trạng thái thanh toán</label>
+                <select asp-for="TrangThaiThanhToan" class="form-control">
+                    <option value=""></option>
+                    <option value="true">Xác nhận</option>
+                    <option value="false">Chờ xác nhận</option>
+                </select>
+                <span asp-validation-for="TrangThaiThanhToan" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="TongTien" class="control-label">TongTien</label>
+                <input asp-for="TongTien" class="form-control" readonly />
+                <span asp-validation-for="TongTien" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
