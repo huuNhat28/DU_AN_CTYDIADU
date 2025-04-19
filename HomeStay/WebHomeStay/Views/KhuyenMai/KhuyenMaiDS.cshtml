@@ -1,0 +1,96 @@
+﻿@model List<WebHomeStay.Models.KhuyenMai>
+@{
+    ViewData["Title"] = "Danh sách khuyến mãi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Tìm kiếm và Lọc -->
+<form asp-action="Index" method="get" class="row g-3 mb-3">
+    <div class="col-md-3">
+        <label for="Key" class="form-label">Tìm tên khuyến mãi</label>
+        <input type="text" id="Key" name="Key" class="form-control" placeholder="Nhập tên khuyến mãi..." value="@Context.Request.Query["Key"]" />
+    </div>
+
+    <div class="col-md-2">
+        <label for="fromDate" class="form-label">Từ ngày</label>
+        <input type="date" id="fromDate" name="fromDate" class="form-control" />
+    </div>
+
+    <div class="col-md-2">
+        <label for="toDate" class="form-label">Đến ngày</label>
+        <input type="date" id="toDate" name="toDate" class="form-control" />
+    </div>
+
+    <div class="col-md-3">
+        <br />
+        <label for="TrangThai" class="form-label">Trạng thái</label>
+        <select id="TrangThai" name="TrangThai" class="form-select">
+            <option value="">Tất cả</option>
+            <option value="true">Đang áp dụng</option>
+            <option value="false">Ngưng áp dụng</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <label for="soTienGiam" class="form-label">Số tiền giảm</label>
+        <input type="number" id="soTienGiam" name="soTienGiam" class="form-control" placeholder="VND" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">🔍 Lọc</button>
+    </div>
+</form>
+
+<!-- Nút thêm -->
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="Create">➕ Thêm khuyến mãi</a>
+</div>
+
+<!-- Bảng danh sách -->
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên khuyến mãi</th>
+            <th>Thời gian</th>
+            <th>Số tiền giảm</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var km in Model)
+            {
+                <tr>
+                    <td>@km.Id</td>
+                    <td>@km.TenKhuyenMai</td>
+                    <td>@(km.ThoiGian?.ToString("dd/MM/yyyy") ?? "N/A")</td>
+                    <td>@String.Format("{0:N0} VND", km.SoTienGiam ?? 0)</td>
+                    <td>
+                        @if (km.TrangThai == true)
+                        {
+                            <span class="badge bg-success">Đang áp dụng</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Ngưng áp dụng</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@km.Id">✏️ Sửa</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@km.Id" onclick="return confirm('Bạn có chắc muốn xoá khuyến mãi này?')">🗑️ Xoá</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">Không có khuyến mãi nào.</td>
+            </tr>
+        }
+    </tbody>
+</table>

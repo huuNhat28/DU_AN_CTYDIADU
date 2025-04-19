@@ -1,0 +1,43 @@
+﻿@model WebHomeStay.Models.LienHe
+@{
+    ViewData["Title"] = "Sửa liên hệ " + Model.Email;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" id="Email" name="Email" class="form-control" value="@Model.Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label for="Sdt" class="form-label">Số điện thoại</label>
+        <input type="text" id="Sdt" name="Sdt" class="form-control" value="@Model.Sdt" />
+        <span asp-validation-for="Sdt" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label for="TrangThai" class="form-label">Trạng thái</label>
+        <select id="TrangThai" name="TrangThai" class="form-select">
+            <option value="true" selected="@(Model.TrangThai == true)">Đang áp dụng</option>
+            <option value="false" selected="@(Model.TrangThai == true)">Ngưng áp dụng</option>
+        </select>
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success w-100">💾 Lưu thay đổi</button>
+    </div>
+
+    <div class="col-12">
+        <a asp-action="Index" class="btn btn-secondary w-100">↩️ Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

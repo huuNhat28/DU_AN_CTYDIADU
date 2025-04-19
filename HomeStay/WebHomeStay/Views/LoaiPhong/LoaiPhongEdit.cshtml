@@ -1,0 +1,28 @@
+﻿@model WebHomeStay.Models.LoaiPhong
+@{
+    ViewData["Title"] = "Sửa phòng " + Model.TenLoaiPhong;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="TenLoaiPhong" class="form-label">Tên Vai trò</label>
+        <input type="text" id="TenLoaiPhong" name="TenLoaiPhong" class="form-control" value="@Model.TenLoaiPhong" />
+        <span asp-validation-for="TenLoaiPhong" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success w-100">💾 Lưu thay đổi</button>
+    </div>
+
+    <div class="col-12">
+        <a asp-action="Index" class="btn btn-secondary w-100">↩️ Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

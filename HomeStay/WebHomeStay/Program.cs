@@ -33,7 +33,11 @@ namespace WebHomeStay
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
+<<<<<<< HEAD
                 pattern: "{controller=DatPhong}/{action=Index}/{id?}")
+=======
+                pattern: "{controller=Home}/{action=TrangChu}/{id?}")
+>>>>>>> 3c12dddb396a7e1e39292c074fec216f4167d804
                 .WithStaticAssets();
 
             app.Run();

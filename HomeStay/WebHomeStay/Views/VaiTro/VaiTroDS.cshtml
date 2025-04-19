@@ -1,0 +1,67 @@
+﻿@model List<WebHomeStay.Models.VaiTro>
+@{
+    ViewData["Title"] = "Danh sách Vai Trò";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Tìm kiếm -->
+<form asp-action="Index" method="get" class="row g-3 mb-3">
+    <div class="col-md-3">
+        <label for="Key" class="form-label">Tìm tên vai trò</label>
+        <input type="text" id="Key" name="Key" class="form-control" placeholder="Nhập Vai trò..." value="@Context.Request.Query["Key"]" />
+    </div>
+    <br />
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">🔍 Tìm</button>
+    </div>
+</form>
+
+<!-- Nút thêm -->
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="Create">➕ Thêm Vai trò</a>
+</div>
+
+<!-- Bảng danh sách -->
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên Vai Trò</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var vt in Model)
+            {
+                <tr>
+                    <td>@vt.Id</td>
+                    <td>@vt.TenVaiTro</td>
+                    <td>
+                        @if (vt.TrangThai == true)
+                        {
+                            <span class="badge bg-success">Đang Chạy</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Đang dừng</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@vt.Id">✏️ Sửa</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@vt.Id" onclick="return confirm('Bạn có chắc muốn xoá vai trò này?')">🗑️ Xoá</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">Không có Vai trò nào .</td>
+            </tr>
+        }
+    </tbody>
+</table>

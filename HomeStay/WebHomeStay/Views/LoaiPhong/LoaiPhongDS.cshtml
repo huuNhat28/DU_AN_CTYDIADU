@@ -1,0 +1,56 @@
+﻿@model List<WebHomeStay.Models.LoaiPhong>
+@{
+    ViewData["Title"] = "Danh sách loại phòng";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Tìm kiếm -->
+<form asp-action="Index" method="get" class="row g-3 mb-3">
+    <div class="col-md-3">
+        <label for="Key" class="form-label">Tìm tên loại phòng</label>
+        <input type="text" id="Key" name="Key" class="form-control" placeholder="Nhập Loại Phòng..." value="@Context.Request.Query["Key"]" />
+    </div>
+    <div class="col-12">
+        <br />
+        <button type="submit" class="btn btn-primary w-100">🔍 Tìm</button>
+    </div>
+</form>
+
+<!-- Nút thêm -->
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="Create">➕ Thêm Loại phòng</a>
+</div>
+
+<!-- Bảng danh sách -->
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên Loại phòng</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var lp in Model)
+            {
+                <tr>
+                    <td>@lp.Id</td>
+                    <td>@lp.TenLoaiPhong</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@lp.Id">✏️ Sửa</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@lp.Id" onclick="return confirm('Bạn có chắc muốn xoá loại phòng này?')">🗑️ Xoá</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">Không có Loại phòng nào .</td>
+            </tr>
+        }
+    </tbody>
+</table>
